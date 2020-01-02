@@ -2315,21 +2315,10 @@ function Main()
     // Calculate OTP token
     var totpObj = new TOTP();
     var otp = totpObj.getOTP("REVISED");
-    // xsh.Dialog.MsgBox(otp);
-    // xsh.Dialog.Prompt("Copy This Token", "Prompt Dialog", otp, 0);
-
-    // Copy the token to clipboard
+    
+    // login by ssh with token
     xsh.Screen.Synchronous = true;
-    xsh.Screen.Send("cmd /c echo " + otp + "| clip");
+    xsh.Screen.Send("ssh user:passwordprefix" + otp+"@hostname");
     xsh.Screen.Send(String.fromCharCode(13));
-    xsh.Screen.Clear();
 
-    // Open Session
-    // xsh.Session.Open("ssh://username:password@host:port")
-    xsh.Session.Open("C:\Users\REVISED\Documents\NetSarang\Xshell\Sessions\jump.xsh");
-
-    // Close the local shell
-    // xsh.Session.Sleep(1000);
-    xsh.Screen.Send("exit");
-    xsh.Screen.Send(String.fromCharCode(13));
 }
