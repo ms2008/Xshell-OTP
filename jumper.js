@@ -2314,6 +2314,15 @@ function Main()
 {
     // Calculate OTP token
     var totpObj = new TOTP();
+    var epoch = Math.floor(new Date().getTime() / 1000 % 30);
+    var elapsed = 30 - epoch
+
+    // Adjust the sliding window
+    if (elapsed < 3 ){
+        xsh.Dialog.MsgBox("Hold on, and wait " + elapsed + " seconds!");
+        xsh.Session.Sleep(elapsed * 1000);
+    }
+
     var otp = totpObj.getOTP("REVISED");
     // xsh.Dialog.MsgBox(otp);
     // xsh.Dialog.Prompt("Copy This Token", "Prompt Dialog", otp, 0);
