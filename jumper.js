@@ -2318,7 +2318,7 @@ function Main()
     var elapsed = 30 - epoch
 
     // Adjust the sliding window
-    if (elapsed < 3 ){
+    if (elapsed <= 3 ) {
         xsh.Dialog.MsgBox("Hold on, and wait " + elapsed + " seconds!");
         xsh.Session.Sleep(elapsed * 1000);
     }
