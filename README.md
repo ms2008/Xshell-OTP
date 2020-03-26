@@ -13,17 +13,35 @@ function Main()
 {
     // Calculate OTP token
     var totpObj = new TOTP();
+    var epoch = Math.floor(new Date().getTime() / 1000 % 30);
+    var elapsed = 30 - epoch
+
+    // Adjust the sliding window
+    if (elapsed <= 3 ) {
+        xsh.Dialog.MsgBox("Hold on, and wait " + elapsed + " seconds!");
+        xsh.Session.Sleep(elapsed * 1000 + 100);
+    }
+
+    // Calculate OTP token
     // REVISED 修改为你自己的 Google Authenticator Secret
     var otp = totpObj.getOTP("REVISED");
 
     // Copy the token to clipboard
+    xsh.Screen.Synchronous = true;
     xsh.Screen.Send("cmd /c echo " + otp + "| clip");
     xsh.Screen.Send(String.fromCharCode(13));
+    xsh.Screen.Clear();
 
     // Open Session
     // xsh.Session.Open("ssh://username:password@host:port")
     // 修改为你自己的 xsh 文件路径
     xsh.Session.Open("C:\Users\REVISED\Documents\NetSarang\Xshell\Sessions\jump.xsh");
+
+    // Close the local shell
+    // xsh.Session.Sleep(1000);
+    xsh.Screen.Send("exit");
+    xsh.Screen.Send(String.fromCharCode(13));
+}
 }
 ```
 

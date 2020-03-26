@@ -2320,7 +2320,7 @@ function Main()
     // Adjust the sliding window
     if (elapsed <= 3 ) {
         xsh.Dialog.MsgBox("Hold on, and wait " + elapsed + " seconds!");
-        xsh.Session.Sleep(elapsed * 1000);
+        xsh.Session.Sleep(elapsed * 1000 + 100);
     }
 
     var otp = totpObj.getOTP("REVISED");
