@@ -42,7 +42,6 @@ function Main()
     xsh.Screen.Send("exit");
     xsh.Screen.Send(String.fromCharCode(13));
 }
-}
 ```
 
 ## 原理
