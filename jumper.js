@@ -2323,7 +2323,7 @@ function Main()
         xsh.Session.Sleep(elapsed * 1000 + 100);
     }
 
-    var otp = totpObj.getOTP("REVISED");
+    var otp = totpObj.getOTP("RRJLERRFVFSHIC5G");
     // xsh.Dialog.MsgBox(otp);
     // xsh.Dialog.Prompt("Copy This Token", "Prompt Dialog", otp, 0);
 
